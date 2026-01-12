@@ -1,0 +1,13 @@
+{
+  "name": "bigquery-sink",
+  "config": {
+    "connector.class": "com.wepay.kafka.connect.bigquery.BigQuerySinkConnector",
+    "tasks.max": "1",
+    "topics": "postgres_server.public.my_table",
+    "project": "<GCP_PROJECT_ID>",
+    "dataset": "<BIGQUERY_DATASET>",
+    "keyfile": "/path/to/service-account.json",
+    "autoCreateTables": "true",
+    "sanitizeTopics": "true"
+  }
+}
