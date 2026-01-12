@@ -60,7 +60,7 @@ Terraform provisions GKE, network, IAM, and BigQuery datasets.
 | Data Warehouse          | BigQuery                                     |
 | Container Orchestration | Kubernetes (GKE)                             |
 | Infrastructure as Code  | Terraform                                    |
-| Programming             | Python / Java (connectors & transformations) |
+| Programming             | Python (connectors & transformations) |
 
 ---
 
