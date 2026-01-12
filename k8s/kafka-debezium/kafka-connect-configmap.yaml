@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kafka-connect-config
+data:
+  bigquery-sink.json: |
+    {
+      "name": "bigquery-sink",
+      "config": {
+        "connector.class": "com.wepay.kafka.connect.bigquery.BigQuerySinkConnector",
+        "tasks.max": "1",
+        "topics": "servers,customers,game,server_assignment,server_unassignment",
+        "project": "<GCP_PROJECT_ID>",
+        "dataset": "gamer_hosting",
+        "keyfile": "/path/to/service-account.json",
+        "autoCreateTables": "true",
+        "sanitizeTopics": "true"
+      }
+    }

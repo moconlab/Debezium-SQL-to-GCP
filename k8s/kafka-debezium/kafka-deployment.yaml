@@ -2,8 +2,10 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: kafka
+  labels:
+    app: kafka
 spec:
-  serviceName: kafka
+  serviceName: "kafka"
   replicas: 1
   selector:
     matchLabels:
@@ -25,3 +27,14 @@ spec:
               value: "zookeeper:2181"
             - name: ALLOW_PLAINTEXT_LISTENER
               value: "yes"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka
+spec:
+  ports:
+    - port: 9092
+      targetPort: 9092
+  selector:
+    app: kafka
