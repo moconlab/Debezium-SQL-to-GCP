@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debezium
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debezium
+  template:
+    metadata:
+      labels:
+        app: debezium
+    spec:
+      containers:
+        - name: debezium
+          image: debezium/connect:2.2
+          ports:
+            - containerPort: 8083
+          env:
+            - name: BOOTSTRAP_SERVERS
+              value: "kafka:9092"
+            - name: GROUP_ID
+              value: "debezium-group"
+            - name: CONFIG_STORAGE_TOPIC
+              value: "debezium-config"
+            - name: OFFSET_STORAGE_TOPIC
+              value: "debezium-offsets"
+            - name: STATUS_STORAGE_TOPIC
+              value: "debezium-status"
