@@ -9,7 +9,7 @@ This project implements a **Change Data Capture (CDC) pipeline** that captures a
 The pipeline leverages:
 
 * **Debezium** for CDC
-* **Kafka Connect** for streaming events
+* **Kafka Connect** or **Google Pub Sub** for streaming events
 * **Google BigQuery** as the data warehouse
 * **Kubernetes (GKE)** for container orchestration
 * **Terraform** for infrastructure provisioning
