@@ -22,7 +22,7 @@ This setup allows organizations to **track all database changes**, perform **ana
 ## Features
 
 * Capture **insert, update, and delete operations** from SQL databases
-* Stream CDC events to **Kafka** or **Google Pub Sub** and transform into **BigQuery tables**
+* Stream CDC events to **Kafka Connect** or **Google Pub Sub** and transform into **BigQuery tables**
 * Infrastructure managed via **Terraform**
 * Deploy all services on **Google Kubernetes Engine (GKE)**
 * Flexible Debezium connectors for multiple database types (Postgres, MySQL, SQL Server)
@@ -35,7 +35,7 @@ This setup allows organizations to **track all database changes**, perform **ana
 
 ```
 +----------------+       +-------------------+       +--------------------+
-| SQL Database   | --->  | Debezium Connector| --->  | Kafka / Kafka Connect/ Pub Sub|
+| SQL Database   | --->  | Debezium Connector| --->  | Kafka Connect/ Pub Sub|
 | (Postgres / MySQL)|    |  (CDC Capture)   |       | (Streams CDC events) |
 +----------------+       +-------------------+       +--------------------+
                                                           |
@@ -45,7 +45,7 @@ This setup allows organizations to **track all database changes**, perform **ana
                                                 | (CDC Sink / Tables)|
                                                 +--------------------+
 
-GKE Cluster hosts Debezium, Kafka Connect, and optional Kafka broker.
+GKE Cluster hosts Debezium, Kafka Connect/Pub Sub, and optional Kafka broker.
 Terraform provisions GKE, network, IAM, and BigQuery datasets.
 ```
 
@@ -56,7 +56,7 @@ Terraform provisions GKE, network, IAM, and BigQuery datasets.
 | Layer                   | Technology                                   |
 | ----------------------- | -------------------------------------------- |
 | CDC Capture             | Debezium                                     |
-| Stream Platform         | Kafka / Kafka Connect / Pub Sub                        |
+| Stream Platform         | Kafka Connect / Pub Sub                        |
 | Data Warehouse          | BigQuery                                     |
 | Container Orchestration | Kubernetes (GKE)                             |
 | Infrastructure as Code  | Terraform                                    |
